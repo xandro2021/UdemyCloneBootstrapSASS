@@ -1,0 +1,145 @@
+#+title: Submodule: Podcast with Bootstrap
+
+* About
+This is submodule of my studying notes which were released as a public project in order to show it as part of a bigger portfolio, in this submodule I portrait the third website design I learned to create by following the tutorial in the Bootstrap course made by the Mexican programmer and designer Juan Pablo De la torre Valdez in Udemy.
++ Course Name: Boostrap 5 y SASS - La Guia practica - Crea 10 sitios
+
+* Deployment
+[[https://xandro2021.github.io/BootstrapPodcast/][Github Pages Link]]
+
+* Interesting things learned in this Project
+** Installing Packages
+#+begin_src bash
+npm init
+npm i --save-dev sass gulp-sass
+npm i --save-dev gulp
+npm i --save-dev gulp-imagemin@7.1.0
+npm i --save-dev bootstrap
+npm i --save-dev gulp-purgecss gulp-rename
+#+end_src
+** Offset in Bootstrap
+*** Use off-set to align the grid when the content isn't using the whole 12 columns
+#+begin_src html
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h2>Llega a miles y gana dinero</h2>
+                    <p class="mt-2">
+                        Los podcast se han convertido en un medio de entretenimiento que cada dia gana mas seguidores,
+                        con temas variados puedes crear tu propio podcast, ser escuchado(a) por miles de personas y
+                        convertir tu pasion en un negocio.
+                    </p>
+                </div>
+                <div class="col-md-4 offset-md-1">
+                    <img class="img-fluid imagen" alt="imagenes podcast" src="build/img/podcast_cover.png" />
+                </div>
+            </div>
+        </div>
+#+end_src
+*** Or You can create a ladder layout using it!
+#+html: <div><img src="build/img/ladder.png" alt="ejemplo margin negativo" /></div>
+[[file:build/img/ladder.png][Imagen del Ejemplo]]
+#+begin_src html
+<div class="row mt-3">
+    <div class="col-md-6 offset-md-2 mb-2">
+        <div class="testimonial bg-primary ">
+            Sit amet, mattis vulputate enim nulla aliquet porttitor lacus, luctus accumsan tortor
+            posuere ac ut consequat. Gravida posuere ac ut consequat. Gravida
+            eu?
+        </div>
+    </div>
+
+    <div class="col-md-6 offset-md-4 mb-2">
+        <div class="testimonial bg-primary ">
+            Sit amet, mattis vulputate enim nulla aliquet porttitor lacus, luctus accumsan tortor
+            posuere ac ut consequat. Gravida posuere ac ut consequat. Gravida
+            eu?
+        </div>
+    </div>
+
+    <div class="col-md-6 offset-md-6 mb-2">
+        <div class="testimonial bg-primary ">
+            Sit amet, mattis vulputate enim nulla aliquet porttitor lacus, luctus accumsan tortor
+            posuere ac ut consequat. Gravida posuere ac ut consequat. Gravida
+            eu?
+        </div>
+    </div>
+
+</div>
+#+end_src
+** Increase relatively the height of the component regarding other similar components by using negative margins
+#+html: <div><img src="build/img/ejemploMargin.png" alt="ejemplo margin negativo" /></div>
+[[file:build/img/ejemploMargin.png][Imagen del Ejemplo]]
+#+begin_src scss
+.plan {
+    padding: 16rem 4rem 4rem 4rem;
+
+    .precio {
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    &.negocio {
+        @include media-breakpoint-up(md) {
+            margin-top: -5rem;
+            margin-bottom: -5rem;
+            border-radius: 2rem;
+        }
+    }
+}
+#+end_src
+** Interpolation with Vars and Calc
+#+html: <div><img src="build/img/interpolacion.png" alt="ejemplo margin negativo" /></div>
+[[file:build/img/interpolacion.png][Imagen del Ejemplo]]
++ It was used calc to align the card with the increased size to the negative margins by adding the amound of size in the padding top and background-position that was taken by those negative margins.
++ It was created a variable to make it easier to create the changes without messing with the alignment
++ The calc function required the interpolation to force the detection of the variable in the calc function (Although in modern SCSS and CSS it looks that it wasn't longer necessary)
+#+begin_src scss
+$separacion: 5rem;
+
+.plan {
+    padding: 16rem 4rem 4rem 4rem;
+
+    @include media-breakpoint-up(md) {
+        @include transition(scale 300ms ease);
+        &:hover {
+            scale: 1.1;
+        }
+    }
+    .precio {
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    &.inicio {
+        @include m.bgIcono('../img/icono_inicio.svg');
+    }
+
+    &.negocio {
+        @include m.bgIcono('../img/icono_negocio.svg');
+        @include media-breakpoint-up(md) {
+            margin-top: -#{$separacion};
+            margin-bottom: -#{$separacion};
+            border-radius: 2rem;
+            z-index: 1;
+            padding-top: calc(16rem + #{$separacion});
+            background-position-y: calc(2rem + #{$separacion});
+        }
+    }
+
+    &.pro {
+        @include m.bgIcono('../img/icono_pro.svg');
+    }
+}
+#+end_src
+** Edit Bootstrap Container to create a container class with BEM name convention
++ With this code, the class footer__container will have the same behavior than the default bootstrap container
++ It could have also being modified by inheritage from .container but it was recommended by the instructor to be use this approach
+#+begin_src scss
+&__container {
+    @include make-container;
+    max-width: map-get($map: $container-max-widths, $key: xxl);
+}
+#+end_src
