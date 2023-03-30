@@ -8,4 +8,6 @@ This is submodule of my studying notes which were released as a public project i
 [[https://xandro2021.github.io/UdemyCloneBootstrapSASS/][Github Pages Link]]
 
 * Interesting things learned in this Project
-
+** Modify custom bootstrap variables
++ You can find all the modified values at _custom.scss
++ It is a way to change the default values in bootstrap variables, it will help to change the default appearance and save time and code in order to get your desired design
