@@ -41,3 +41,21 @@ This is submodule of my studying notes which were released as a public project i
     }
 }
 #+end_src
+** New Grid in Bootstrap
++ There is a new bootstrap class alternative to d-grid that came its own subclasses that result in a similar behaviour than the default row/col system and more complex than the default d-grid
++ You must activate before being able to use by using the variable
+#+begin_src scss
+$enable-cssgrid: true;
+#+end_src
++ It contains some subclasses for its children and the behaviour is exactly as the default row/col bootstrap system but using grid-layout instead of flexbox
+  + g-col-6, g-col-md-4, g-col-lg-3
+#+begin_src html
+            <li class="g-col-6 g-col-md-4 g-col-lg-3">
+                <a href="#" class="text-decoration-none">
+                    <div class="bg-light">
+                        <img class="img-fluid" alt="Imagen Icono" src="build/img/iconos-08.png" />
+                    </div>
+                    <p class="fw-bold mt-2">Musica</p>
+                </a>
+            </li>
+#+end_src
