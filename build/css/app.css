@@ -4111,15 +4111,15 @@ textarea.form-control-lg {
 
 .card {
   --bs-card-spacer-y: 1rem;
-  --bs-card-spacer-x: 1rem;
+  --bs-card-spacer-x: 0;
   --bs-card-title-spacer-y: 0.5rem;
-  --bs-card-border-width: 1px;
+  --bs-card-border-width: 0;
   --bs-card-border-color: var(--bs-border-color-translucent);
-  --bs-card-border-radius: 0.375rem;
+  --bs-card-border-radius: 0;
   --bs-card-box-shadow: ;
-  --bs-card-inner-border-radius: calc(0.375rem - 1px);
+  --bs-card-inner-border-radius: 0;
   --bs-card-cap-padding-y: 0.5rem;
-  --bs-card-cap-padding-x: 1rem;
+  --bs-card-cap-padding-x: 0;
   --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
   --bs-card-cap-color: ;
   --bs-card-height: ;
@@ -10784,4 +10784,70 @@ textarea.form-control-lg {
 }
 .descuentos .buscar {
   border-radius: 0;
+}
+
+.nav .active {
+  color: #000;
+}
+
+.categoria-curso {
+  border: 1px solid #6a6f73;
+  padding: 1.5rem;
+}
+
+.listado-cursos {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.listado-cursos .curso {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+@media (min-width: 576px) {
+  .listado-cursos .curso {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+@media (min-width: 768px) {
+  .listado-cursos .curso {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+@media (min-width: 992px) {
+  .listado-cursos .curso {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+.listado-cursos .curso .titulo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+.listado-cursos .curso .instructor {
+  margin: 0;
+}
+.listado-cursos .curso .total,
+.listado-cursos .curso .instructor {
+  font-size: 0.8rem;
+}
+.listado-cursos .curso .calificacion {
+  width: 6rem;
+}
+.listado-cursos .curso .precio {
+  font-size: 0.9rem;
+}
+.listado-cursos .curso .precio span {
+  font-size: 0.7rem;
+  text-decoration: line-through;
 }
